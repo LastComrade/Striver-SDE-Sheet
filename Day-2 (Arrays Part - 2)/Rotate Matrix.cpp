@@ -5,6 +5,9 @@ class Solution
 public:
   void rotate(vector<vector<int>> &matrix)
   {
+    // Transpose Matrix -> Rows are reversed = Rotated Matrix
+    
+    // Transpose the matrix
     for (int i = 0; i < matrix[0].size(); i++)
     {
       for (int j = i + 1; j < matrix.size(); j++)
@@ -15,6 +18,7 @@ public:
       }
     }
 
+    // Reverse the rows
     for (int i = 0; i < matrix.size(); i++)
     {
       reverse(matrix[i].begin(), matrix[i].end());
