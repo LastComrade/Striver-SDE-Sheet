@@ -1,4 +1,4 @@
-// Problem Link - https://leetcode.com/problems/search-a-2d-matrix/submissions/
+// Problem Link - https://leetcode.com/problems/search-a-2d-matrix/
 
 class Solution
 {
