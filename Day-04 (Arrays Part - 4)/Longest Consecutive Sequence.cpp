@@ -9,29 +9,38 @@ public:
       return nums.size();
 
     // Removing the duplicates ans sorting the nums array
-    set<int> s;
+    unordered_set<int> numSet;
 
     for (int num : nums)
-      s.insert(num);
+      numSet.insert(num);
 
-    nums.assign(s.begin(), s.end());
+    nums.assign(numSet.begin(), numSet.end());
 
-    // Initializing variables len and ans with 1 because minimum length of the sequence could be 1 i.e a single number and ans will be atleast 1, if not zero :p
-    int len = 1, ans = 1;
+    // Initializing variables len and ans with 1 because minimum length of the
+    // sequence could be 1 i.e a single number and ans will be atleast 1,
+    // if not zero :p
+    int len = 1, ans = 0;
 
-    for (int i = 1; i < nums.size(); i++)
+    for (int i = 0; i < nums.size(); i++)
     {
-      if (nums[i] == nums[i - 1] + 1)
-        len++;
-      else
+      if (numSet.find(nums[i] - 1) == numSet.end())
+      {
+        int currNum = nums[i];
         len = 1;
 
-      ans = max(len, ans);
+        while (numSet.find(currNum + 1) != numSet.end())
+        {
+          currNum += 1;
+          len++;
+        }
+
+        ans = max(len, ans);
+      }
     }
 
     return ans;
   }
 };
 
-// Time Complexity - O(N * log(N))
+// Time Complexity - O(N)
 // Space Complexity - O(N)
